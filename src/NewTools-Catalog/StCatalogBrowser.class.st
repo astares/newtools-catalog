@@ -29,7 +29,11 @@ StCatalogBrowser class >> open [
 StCatalogBrowser >> initializeWidgets [
 
 	super initializeWidgets.
-	projectList := self newTable 
+	projectList := self newTable.
+	projectList 
+		addColumn: (SpStringTableColumn title: 'Name' evaluated: #name);
+		addColumn: (SpStringTableColumn title: 'Baseline' evaluated: #baseline);
+		items: StCatalogProvider loadProjects 
 ]
 
 { #category : #accessing }
